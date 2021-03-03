@@ -1,7 +1,7 @@
 # Dicoding_BStore
 
 ## Information
-![Android Logo](https://1000logos.net/wp-content/uploads/2016/10/Android-Logo.png =250x100)
+![Android Logo](https://1000logos.net/wp-content/uploads/2016/10/Android-Logo.png | width=100)
 
 Type                  : Final Submission
 
