@@ -3,6 +3,8 @@
 ## Information
 Type                  : Final Submission
 
-Platform              : Mobile - Android
+Platform              : Mobile - [Android](https://www.android.com/intl/id_id/)
 
-Programming Language  : Kotlin
+Programming Language  : [Kotlin](https://developer.android.com/kotlin?hl=id)
+
+Dicoding Class        : [ Belajar Membuat Aplikasi Android untuk Pemula](https://www.dicoding.com/academies/51)
