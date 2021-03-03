@@ -16,4 +16,45 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="FragmentLayout">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:titleMarginTop">8dp</item>
+        <item name="android:titleMarginBottom">8dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="TextContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextContent.Medium">
+        <item name="color">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextContent.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="SearchBar.Light" parent="MaterialSearchBarLight">
+        <item name="android:padding">10dp</item>
+        <item name="mt_searchBarColor">@color/grey_100</item>
+        <item name="mt_dividerColor">@color/searchBarDividerColor</item>
+        <item name="mt_navIconTint">@color/searchBarNavIconTintColor</item>
+        <item name="mt_searchIconTint">@color/searchBarSearchIconTintColor</item>
+        <item name="mt_clearIconTint">@color/searchBarClearIconTintColor</item>
+        <item name="mt_menuIconTint">@color/searchBarMenuIconTintColor</item>
+        <item name="mt_backIconTint">@color/searchBarBackIconTintColor</item>
+        <item name="mt_textCursorTint">@color/searchBarCursorColor</item>
+        <item name="mt_textColor">@color/searchBarTextColor</item>
+        <item name="mt_hintColor">@color/searchBarHintColor</item>
+        <item name="mt_placeholderColor">@color/searchBarPlaceholderColor</item>
+        <item name="mt_highlightedTextColor">@color/searchBarTextHighlightColor</item>
+    </style>
+
 </resources>
