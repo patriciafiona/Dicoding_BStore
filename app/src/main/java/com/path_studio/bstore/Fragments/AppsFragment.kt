@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.path_studio.bstore.Adapters.ListAppAdapter
+import com.path_studio.bstore.Adapters.ListVerticalAppAdapter
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
@@ -28,18 +28,18 @@ class AppsFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView =  inflater.inflate(R.layout.fragment_apps, container, false)
 
-        rvApp = rootView.findViewById(R.id.rv_apps)
+        rvApp = rootView.findViewById(R.id.rv_fullApps)
         rvApp.setHasFixedSize(true)
 
-        list.addAll(AppsData.listData)
+        list.addAll(AppsData.listAllData)
         showRecyclerList()
 
         return rootView
     }
 
     private fun showRecyclerList() {
-        rvApp.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        val listAppAdapter = ListAppAdapter(list)
+        rvApp.layoutManager = LinearLayoutManager(activity)
+        val listAppAdapter = ListVerticalAppAdapter(list)
         rvApp.adapter = listAppAdapter
     }
 }

@@ -10,9 +10,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.R
-import java.net.URI
 
-class ListAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adapter<ListAppAdapter.ListViewHolder>(){
+class ListHorizontalAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adapter<ListHorizontalAppAdapter.ListViewHolder>(){
+    private var appSizeResult: String = ""
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_col_app, viewGroup, false)
         return ListViewHolder(view)
@@ -20,13 +21,21 @@ class ListAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adapter<ListAp
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val app = listApp[position]
-        //var appLogoURI: URI = URI.create(app.appLogo)
+
         Glide.with(holder.itemView.context)
             .load(app.appLogo)
             .apply(RequestOptions().override(150, 150))
             .into(holder.dispAppLogo)
 
         holder.dispAppName.text = app.appName
+
+        //App Size
+        var tempAppSize: Double = app.appSize
+        if(tempAppSize>=1000)
+            appSizeResult = "${tempAppSize.toString()} GB"
+        else
+            appSizeResult = "${tempAppSize.toString()} MB"
+        holder.dispAppSize.text = appSizeResult
     }
 
     override fun getItemCount(): Int {
@@ -35,7 +44,7 @@ class ListAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adapter<ListAp
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var dispAppName: TextView = itemView.findViewById(R.id.appName_item_col_disp)
-        //var dispDevName: TextView = itemView.findViewById(R.id.tv_item_detail)
+        var dispAppSize: TextView = itemView.findViewById(R.id.appSize_item_col_disp)
         var dispAppLogo: ImageView = itemView.findViewById(R.id.img_item_col_disp)
     }
 }

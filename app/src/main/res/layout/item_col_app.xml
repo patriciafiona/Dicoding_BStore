@@ -21,13 +21,13 @@
         android:layout_marginTop="5dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="@string/col_app_name"/>
+        android:text="@string/temp_app_name"/>
 
     <TextView
         android:id="@+id/appSize_item_col_disp"
         style="@style/TextContent.Small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/col_app_size"/>
+        android:text="@string/temp_app_size"/>
 
 </LinearLayout>

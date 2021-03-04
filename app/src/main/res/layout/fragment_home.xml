@@ -14,14 +14,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.mancj.materialsearchbar.MaterialSearchBar
-                android:id="@+id/searchBar"
-                style="@style/SearchBar.Light"
-                app:mt_hint="Search here"
-                app:mt_maxSuggestionsCount="5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_apps"
                 android:layout_width="match_parent"
