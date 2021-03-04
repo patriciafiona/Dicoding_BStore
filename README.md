@@ -1,4 +1,5 @@
 # Dicoding_BStore
+Result of Renew my Dicoding: " Belajar Membuat Aplikasi Android untuk Pemula" Certificate (Submission Result)
 
 ## Information
 <img src="https://1000logos.net/wp-content/uploads/2016/10/Android-Logo.png" width="200" />
