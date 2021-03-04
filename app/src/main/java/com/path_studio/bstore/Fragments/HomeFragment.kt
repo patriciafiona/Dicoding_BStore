@@ -1,27 +1,43 @@
 package com.path_studio.bstore.Fragments
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
-import android.text.TextWatcher
+import android.os.Handler
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mancj.materialsearchbar.MaterialSearchBar
-import com.mancj.materialsearchbar.MaterialSearchBar.OnSearchActionListener
-import com.mancj.materialsearchbar.adapter.SuggestionsAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.path_studio.bstore.Adapters.HomeBannerSlideAdapter
 import com.path_studio.bstore.Adapters.ListHorizontalAppAdapter
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
+import org.w3c.dom.Text
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
     private lateinit var rvApp: RecyclerView
     private var list: ArrayList<App> = arrayListOf()
+
+    private var sliderAdapter: HomeBannerSlideAdapter? = null
+    private var mSlideViewPager: ViewPager? = null
+    private var mDotLayout: LinearLayout? = null
+
+    private lateinit var mDosts: Array<TextView>
+    private var nCurrentPage = 0
+
+    var timer: Timer? = null
+    val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
+    val PERIOD_MS: Long = 3000 // time in milliseconds between successive task executions.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +50,45 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView =  inflater.inflate(R.layout.fragment_home, container, false)
 
+        //Setting Recycle View
         rvApp = rootView.findViewById(R.id.rv_apps)
         rvApp.setHasFixedSize(true)
 
         list.addAll(AppsData.listData)
         showRecyclerList()
 
+        //Setting Home Banner Slide Show
+        showHomeBanner(rootView)
+
         return rootView
+    }
+
+    private fun showHomeBanner(view: View){
+        mSlideViewPager = view.findViewById<View>(R.id.homeBannerContainer) as ViewPager
+        mDotLayout = view.findViewById<View>(R.id.dotsLayoutHomeBanner) as LinearLayout
+
+        sliderAdapter = HomeBannerSlideAdapter(view.context)
+        mSlideViewPager!!.setAdapter(sliderAdapter)
+
+        addDotsIndicator(0)
+        mSlideViewPager!!.addOnPageChangeListener(viewListener)
+
+        /*After setting the adapter use the timer */
+        val handler = Handler()
+        val Update = Runnable {
+            if (nCurrentPage == 3) {
+                nCurrentPage = 0
+            }
+            mSlideViewPager!!.setCurrentItem(nCurrentPage++, true)
+        }
+
+        timer = Timer() // This will create a new Thread
+        timer!!.schedule(object : TimerTask() {
+            // task to be scheduled
+            override fun run() {
+                handler.post(Update)
+            }
+        }, DELAY_MS, PERIOD_MS)
     }
 
     private fun showRecyclerList() {
@@ -51,6 +99,32 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //
+    }
+
+    fun addDotsIndicator(position: Int) {
+        mDotLayout!!.removeAllViews()
+        mDosts = arrayOf<TextView>(
+            TextView(activity), TextView(activity), TextView(activity)
+        )
+        for (i in mDosts.indices) {
+            mDosts[i] = TextView(activity)
+            mDosts[i].text = Html.fromHtml("&#8226;", 0)
+            mDosts[i].textSize = 35f
+            mDosts[i].setTextColor(ContextCompat.getColor(requireActivity(), R.color.grey_700))
+            mDotLayout!!.addView(mDosts[i])
+        }
+        mDosts[position].setTextColor(ContextCompat.getColor(requireActivity(), R.color.blue))
+    }
+
+    var viewListener: OnPageChangeListener = object : OnPageChangeListener {
+        override fun onPageScrolled(i: Int, v: Float, i1: Int) {}
+
+        override fun onPageSelected(i: Int) {
+            addDotsIndicator(i)
+            nCurrentPage = i
+        }
+
+        override fun onPageScrollStateChanged(i: Int) {}
     }
 
 }

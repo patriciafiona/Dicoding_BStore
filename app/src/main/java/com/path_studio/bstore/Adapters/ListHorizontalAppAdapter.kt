@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.path_studio.bstore.DoubleConverter
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.R
 
 class ListHorizontalAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adapter<ListHorizontalAppAdapter.ListViewHolder>(){
-    private var appSizeResult: String = ""
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_col_app, viewGroup, false)
@@ -30,12 +30,7 @@ class ListHorizontalAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adap
         holder.dispAppName.text = app.appName
 
         //App Size
-        var tempAppSize: Double = app.appSize
-        if(tempAppSize>=1000)
-            appSizeResult = "${tempAppSize.toString()} GB"
-        else
-            appSizeResult = "${tempAppSize.toString()} MB"
-        holder.dispAppSize.text = appSizeResult
+        holder.dispAppSize.text = DoubleConverter.convertSizeToText(app.appSize)
     }
 
     override fun getItemCount(): Int {

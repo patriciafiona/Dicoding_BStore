@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.path_studio.bstore.DoubleConverter
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.R
 
@@ -37,12 +38,7 @@ class ListVerticalAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adapte
         holder.dispAppRating.text = rattingResult
 
         //App Size
-        var tempAppSize: Double = app.appSize
-        if(tempAppSize>=1000)
-            appSizeResult = "${tempAppSize.toString()} GB"
-        else
-            appSizeResult = "${tempAppSize.toString()} MB"
-        holder.dispAppSize.text = appSizeResult
+        holder.dispAppSize.text = DoubleConverter.convertSizeToText(app.appSize)
     }
 
     override fun getItemCount(): Int {
