@@ -1,5 +1,7 @@
 package com.path_studio.bstore.Model
 
+import android.util.Log
+
 object AppsData {
 
     private val array_of_apps = arrayOf(
@@ -188,6 +190,29 @@ object AppsData {
             }
         }
         return list
-
     }
+
+    //get 10 best app - based on ratting
+    val listDataTenBestApp: ArrayList<App>
+        get() {
+            val list = arrayListOf<App>()
+            //save data location index with ratting information
+            val sortedAppRating = hashMapOf<Int,Double>()
+            array_of_apps.forEachIndexed{ index, data -> sortedAppRating.put(index, data[4].toString().toDouble()) }
+
+            //sorted data ratting (Best Ratting -> Worse Ratting)
+            val temp = sortedAppRating.toList().sortedByDescending { (_, value) -> value}.toMap()
+            //get all sorted index
+            val arrayDataIndex = temp.keys.toList()
+
+            for (i in 0..9) {
+                val app = App()
+                app.appName = array_of_apps[arrayDataIndex[i]][1].toString()
+                app.appSize = array_of_apps[arrayDataIndex[i]][5].toString().toDouble()
+                app.appLogo = array_of_apps[arrayDataIndex[i]][6].toString()
+                list.add(app)
+            }
+            return list
+        }
+
 }

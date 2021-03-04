@@ -4,6 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.view.animation.Interpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -15,19 +18,21 @@ import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
 
+
 class HomeBannerSlideAdapter(val context: Context): PagerAdapter() {
     private var layoutInflater: LayoutInflater? = null
     private lateinit var bannerDataList: ArrayList<App>
 
     //Arrays
     var image = intArrayOf(
-        R.drawable.recommend_app_01,
-        R.drawable.recommend_app_02,
-        R.drawable.recommend_app_03
+            R.drawable.recommend_app_01,
+            R.drawable.recommend_app_02,
+            R.drawable.recommend_app_03,
+            R.drawable.recommend_app_04
     )
 
     var appRecommendID = intArrayOf(
-        5, 12, 4
+            5, 12, 4, 7
     )
 
     override fun getCount(): Int {

@@ -19,9 +19,7 @@ import com.path_studio.bstore.Adapters.ListHorizontalAppAdapter
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
-import org.w3c.dom.Text
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -39,28 +37,32 @@ class HomeFragment : Fragment() {
     val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
     val PERIOD_MS: Long = 3000 // time in milliseconds between successive task executions.
 
+    private lateinit var rootView: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView =  inflater.inflate(R.layout.fragment_home, container, false)
+        rootView =  inflater.inflate(R.layout.fragment_home, container, false)
 
         //Setting Recycle View
         rvApp = rootView.findViewById(R.id.rv_apps)
         rvApp.setHasFixedSize(true)
 
-        list.addAll(AppsData.listData)
+        list.addAll(AppsData.listDataTenBestApp)
         showRecyclerList()
 
-        //Setting Home Banner Slide Show
-        showHomeBanner(rootView)
-
         return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //Setting Home Banner Slide Show
+        showHomeBanner(view)
     }
 
     private fun showHomeBanner(view: View){
@@ -76,7 +78,7 @@ class HomeFragment : Fragment() {
         /*After setting the adapter use the timer */
         val handler = Handler()
         val Update = Runnable {
-            if (nCurrentPage == 3) {
+            if (nCurrentPage == 4) {
                 nCurrentPage = 0
             }
             mSlideViewPager!!.setCurrentItem(nCurrentPage++, true)
@@ -97,23 +99,20 @@ class HomeFragment : Fragment() {
         rvApp.adapter = listAppAdapter
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //
-    }
-
     fun addDotsIndicator(position: Int) {
         mDotLayout!!.removeAllViews()
         mDosts = arrayOf<TextView>(
-            TextView(activity), TextView(activity), TextView(activity)
+                TextView(rootView?.context), TextView(rootView?.context),
+                TextView(rootView?.context), TextView(rootView?.context)
         )
         for (i in mDosts.indices) {
-            mDosts[i] = TextView(activity)
+            mDosts[i] = TextView(rootView.context)
             mDosts[i].text = Html.fromHtml("&#8226;", 0)
             mDosts[i].textSize = 35f
-            mDosts[i].setTextColor(ContextCompat.getColor(requireActivity(), R.color.grey_700))
+            mDosts[i].setTextColor(ContextCompat.getColor(rootView.context, R.color.grey_700))
             mDotLayout!!.addView(mDosts[i])
         }
-        mDosts[position].setTextColor(ContextCompat.getColor(requireActivity(), R.color.blue))
+        mDosts[position].setTextColor(ContextCompat.getColor(rootView.context, R.color.blue))
     }
 
     var viewListener: OnPageChangeListener = object : OnPageChangeListener {
