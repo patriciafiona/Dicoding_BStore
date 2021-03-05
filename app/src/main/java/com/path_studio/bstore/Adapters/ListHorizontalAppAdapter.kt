@@ -1,18 +1,23 @@
 package com.path_studio.bstore.Adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.path_studio.bstore.Activities.DetailApp
+import com.path_studio.bstore.Activities.MainActivity
 import com.path_studio.bstore.DoubleConverter
 import com.path_studio.bstore.Model.App
+import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
 
-class ListHorizontalAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adapter<ListHorizontalAppAdapter.ListViewHolder>(){
+class ListHorizontalAppAdapter(val listApp: ArrayList<App>, val activity: MainActivity) : RecyclerView.Adapter<ListHorizontalAppAdapter.ListViewHolder>(){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_col_app, viewGroup, false)
@@ -31,6 +36,14 @@ class ListHorizontalAppAdapter (val listApp: ArrayList<App>) : RecyclerView.Adap
 
         //App Size
         holder.dispAppSize.text = DoubleConverter.convertSizeToText(app.appSize)
+
+        holder.itemView.setOnClickListener {
+            //Toast.makeText(holder.itemView.context, "You Choose: " + listApp.get(holder.adapterPosition).appName, Toast.LENGTH_SHORT).show()
+            //show detail page
+            val i = Intent(activity, DetailApp::class.java)
+            i.putExtra("appData", AppsData.listDataFromID(listApp.get(holder.adapterPosition).appID))
+            activity.startActivity(i)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -2,11 +2,24 @@
 <resources>
 
     <style name="FragmentLayout">
-        <item name="android:layout_marginHorizontal">5dp</item>
-        <item name="android:layout_marginVertical">8dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingBottom">120dp</item>
+    </style>
+
+    <style name="FrameContent">
+        <item name="android:layout_marginHorizontal">5dp</item>
+        <item name="android:layout_marginVertical">8dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="SocialMediaIcons">
+        <item name="android:layout_marginHorizontal">10dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
     </style>
 
 </resources>

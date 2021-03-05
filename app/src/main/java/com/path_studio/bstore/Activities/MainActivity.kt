@@ -97,4 +97,16 @@ class MainActivity : AppCompatActivity() {
             override fun OnItemDeleteListener(position: Int, v: View) {}
         })
     }
+
+    fun setSearchBarVisibility(status: Int){
+        val searchBar:MaterialSearchBar = this.findViewById(R.id.searchBar)
+        when(status){
+            0 -> {
+                searchBar.visibility = View.GONE
+            }
+            1 -> {
+                searchBar.visibility = View.VISIBLE
+            }
+        }
+    }
 }

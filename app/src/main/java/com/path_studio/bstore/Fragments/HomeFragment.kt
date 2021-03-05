@@ -1,5 +1,6 @@
 package com.path_studio.bstore.Fragments
 
+import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -19,12 +20,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.path_studio.bstore.Activities.DetailApp
+import com.path_studio.bstore.Activities.MainActivity
 import com.path_studio.bstore.Adapters.HomeBannerSlideAdapter
 import com.path_studio.bstore.Adapters.ListHorizontalAppAdapter
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
-import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -71,6 +73,9 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //Show Search Bar
+        (activity as MainActivity).setSearchBarVisibility(1)
+
         //Setting Home Banner Slide Show
         showHomeBanner(view)
     }
@@ -90,7 +95,7 @@ class HomeFragment : Fragment() {
 
         //Setting Text Stay Health Animation
         val text: TextView = view.findViewById(R.id.stayHealthTxt) as TextView
-        val fadeTxtAnim: Animation = AnimationUtils.loadAnimation(view.context, R.anim.fade_in)
+        val fadeTxtAnim: Animation = AnimationUtils.loadAnimation(view.context, R.anim.fade_in_and_slide)
         fadeTxtAnim.startOffset = 500
         text.startAnimation(fadeTxtAnim)
     }
@@ -148,15 +153,15 @@ class HomeFragment : Fragment() {
 
     private fun showRecyclerList(rvApp: RecyclerView, list: ArrayList<App>) {
         rvApp.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        val listAppAdapter = ListHorizontalAppAdapter(list)
+        val listAppAdapter = ListHorizontalAppAdapter(list, activity as MainActivity)
         rvApp.adapter = listAppAdapter
     }
 
     fun addDotsIndicator(position: Int) {
         mDotLayout!!.removeAllViews()
         mDosts = arrayOf<TextView>(
-                TextView(rootView?.context), TextView(rootView?.context),
-                TextView(rootView?.context), TextView(rootView?.context)
+                TextView(rootView.context), TextView(rootView.context),
+                TextView(rootView.context), TextView(rootView.context)
         )
         for (i in mDosts.indices) {
             mDosts[i] = TextView(rootView.context)
