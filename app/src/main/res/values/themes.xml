@@ -5,7 +5,7 @@
     <!-- Base application theme. -->
     <style name="Theme.BStore" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/grey_500</item>
+        <item name="colorPrimary">@color/grey_900</item>
         <item name="colorPrimaryVariant">@color/grey_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -32,10 +32,28 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="TextContent.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextContent.Big">
+        <item name="color">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextContent.Bold.Big">
+        <item name="color">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextContent.Bold.Medium">
+        <item name="color">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="TextContent.Medium">
         <item name="color">@color/black</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextContent.Small">

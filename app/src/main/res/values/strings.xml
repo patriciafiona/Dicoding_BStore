@@ -30,4 +30,7 @@
     <string name="temp_app_ratting">5.0</string>
     <string name="hello_blank_fragment">Hello blank</string>
     <string name="recommended_for_you">Recommended for you</string>
+    <string name="top_10_apps">Top 10 Apps</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="game">Game</string>
 </resources>

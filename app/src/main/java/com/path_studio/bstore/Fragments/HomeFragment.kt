@@ -1,13 +1,18 @@
 package com.path_studio.bstore.Fragments
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,12 +24,18 @@ import com.path_studio.bstore.Adapters.ListHorizontalAppAdapter
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
+import org.w3c.dom.Text
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
-    private lateinit var rvApp: RecyclerView
-    private var list: ArrayList<App> = arrayListOf()
+    private lateinit var rvTopTenApp: RecyclerView
+    private var listTopTen: ArrayList<App> = arrayListOf()
+    private lateinit var rvEntertainment: RecyclerView
+    private var listEntertainment: ArrayList<App> = arrayListOf()
+    private lateinit var rvGame: RecyclerView
+    private var listGame: ArrayList<App> = arrayListOf()
 
     private var sliderAdapter: HomeBannerSlideAdapter? = null
     private var mSlideViewPager: ViewPager? = null
@@ -51,11 +62,10 @@ class HomeFragment : Fragment() {
         rootView =  inflater.inflate(R.layout.fragment_home, container, false)
 
         //Setting Recycle View
-        rvApp = rootView.findViewById(R.id.rv_apps)
-        rvApp.setHasFixedSize(true)
+        settingRecycleView()
 
-        list.addAll(AppsData.listDataTenBestApp)
-        showRecyclerList()
+        //Setting Animation
+        settingAnimation(rootView)
 
         return rootView
     }
@@ -63,6 +73,49 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //Setting Home Banner Slide Show
         showHomeBanner(view)
+    }
+
+    private fun settingAnimation(view: View){
+        //Setting Gradient Animated Background
+        val constraintLayout: ConstraintLayout = view.findViewById(R.id.stayHealthBanner)
+        val animationDrawable = constraintLayout.background as AnimationDrawable
+        animationDrawable.setEnterFadeDuration(2000)
+        animationDrawable.setExitFadeDuration(4000)
+        animationDrawable.start()
+
+        //Setting Image Stay Health Animation
+        val image: ImageView = view.findViewById(R.id.stayHealthImg) as ImageView
+        val fadeImgAnim:Animation = AnimationUtils.loadAnimation(view.context, R.anim.fade_in)
+        image.startAnimation(fadeImgAnim)
+
+        //Setting Text Stay Health Animation
+        val text: TextView = view.findViewById(R.id.stayHealthTxt) as TextView
+        val fadeTxtAnim: Animation = AnimationUtils.loadAnimation(view.context, R.anim.fade_in)
+        fadeTxtAnim.startOffset = 500
+        text.startAnimation(fadeTxtAnim)
+    }
+
+    private fun settingRecycleView(){
+        //Top Ten Apps
+        rvTopTenApp = rootView.findViewById(R.id.rv_TopTenApps)
+        rvTopTenApp.setHasFixedSize(true)
+
+        listTopTen.addAll(AppsData.listDataTenBestApp)
+        showRecyclerList(rvTopTenApp, listTopTen)
+
+        //Entertainment Apps
+        rvEntertainment = rootView.findViewById(R.id.rv_appCategoryEntertainment)
+        rvEntertainment.setHasFixedSize(true)
+
+        listEntertainment.addAll(AppsData.listDataCategory("Entertainment"))
+        showRecyclerList(rvEntertainment, listEntertainment)
+
+        //Game Apps
+        rvGame = rootView.findViewById(R.id.rv_appCategoryGame)
+        rvGame.setHasFixedSize(true)
+
+        listGame.addAll(AppsData.listDataCategory("Game"))
+        showRecyclerList(rvGame, listGame)
     }
 
     private fun showHomeBanner(view: View){
@@ -93,7 +146,7 @@ class HomeFragment : Fragment() {
         }, DELAY_MS, PERIOD_MS)
     }
 
-    private fun showRecyclerList() {
+    private fun showRecyclerList(rvApp: RecyclerView, list: ArrayList<App>) {
         rvApp.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         val listAppAdapter = ListHorizontalAppAdapter(list)
         rvApp.adapter = listAppAdapter

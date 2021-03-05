@@ -32,7 +32,10 @@ class HomeBannerSlideAdapter(val context: Context): PagerAdapter() {
     )
 
     var appRecommendID = intArrayOf(
-            5, 12, 4, 7
+            60001,
+            50002,
+            30001,
+            30002
     )
 
     override fun getCount(): Int {
