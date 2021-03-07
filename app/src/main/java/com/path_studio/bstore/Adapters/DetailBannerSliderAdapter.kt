@@ -11,7 +11,7 @@ import com.path_studio.bstore.R
 
 class DetailBannerSliderAdapter(val image: Array<String>, val imgType: String): RecyclerView.Adapter<DetailBannerSliderAdapter.ListViewHolder>(){
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.detail_banner_slider_portrait, viewGroup, false)
+        val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.detail_banner_slider, viewGroup, false)
         return ListViewHolder(view)
     }
 

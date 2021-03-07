@@ -38,4 +38,8 @@
     <string name="myEmail">patriciafiona3@gmail.com</string>
     <string name="mobile">Mobile</string>
     <string name="install">Install</string>
+    <string name="about_this_game">About this game</string>
+    <string name="ratings_and_reviews">Ratings and reviews</string>
+    <string name="temp_appDesc">App description here...</string>
+    <string name="show_less">Show Less</string>
 </resources>

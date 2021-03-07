@@ -1,13 +1,16 @@
 package com.path_studio.bstore.Activities
 
+import android.R.attr
+import android.R.attr.button
 import android.os.Bundle
-import android.util.Log
+import android.text.TextUtils
+import android.transition.Visibility
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -42,7 +45,48 @@ class DetailApp : AppCompatActivity() {
 
         //Show Detail Banner
         showDetailBanner(listData[0].arrayDetailBanner, listData[0].detailBannerType)
-        Log.e("Hasil dari list img banner: ", listData[0].arrayDetailBanner[0].toString())
+
+        //Initiate OnCLick
+        setAllOnClick()
+    }
+
+    private fun setAllOnClick(){
+        //set button about desc onclick
+        val aboutButton: ImageButton = findViewById(R.id.detailAboutArrow)
+        val showLessBtn: Button = findViewById(R.id.btn_showless_desc)
+        val descText:TextView = findViewById(R.id.detail_appDesc)
+
+        aboutButton.setOnClickListener {
+            val deg = changeDegree(aboutButton)
+            aboutButton.animate().rotation(deg).interpolator = AccelerateDecelerateInterpolator()
+
+            //Show more or Less Text based on current degree
+            if(deg == 90f) {
+                descText.maxLines = Integer.MAX_VALUE
+                descText.ellipsize = null
+                showLessBtn.visibility = View.VISIBLE
+            }else if(deg == 0f){
+                //bring back eclipse and maxline
+                descText.maxLines = 2
+                descText.ellipsize = TextUtils.TruncateAt.END
+                showLessBtn.visibility = View.GONE
+            }
+            this.invalidateOptionsMenu() //Update View
+        }
+
+        //set Show less onclick
+        showLessBtn.setOnClickListener {
+            aboutButton.animate().rotation(0f).interpolator = AccelerateDecelerateInterpolator()
+
+            descText.maxLines = 2
+            descText.ellipsize = TextUtils.TruncateAt.END
+            showLessBtn.visibility = View.GONE
+            this.invalidateOptionsMenu() //Update View
+        }
+    }
+
+    private fun changeDegree(aboutButton: ImageButton): Float{
+        return if (aboutButton.rotation == 90f) 0f else 90f
     }
 
     private fun settingAnimatedBackground(){
@@ -58,6 +102,10 @@ class DetailApp : AppCompatActivity() {
         val appName: TextView = findViewById(R.id.detail_appName)
         val devName: TextView = findViewById(R.id.detail_devName)
         val appCategory: TextView = findViewById(R.id.detail_appCategory)
+        val appDesc: TextView = findViewById(R.id.detail_appDesc)
+        val appRatingNum: TextView = findViewById(R.id.detail_appRating_num)
+        val appRatingBar: RatingBar = findViewById(R.id.detail_appRating_bar)
+        val detail_aboutApp_title: TextView = findViewById(R.id.detail_aboutApp_title)
         appBgImage = findViewById(R.id.detail_backgroundGradient)
 
         Glide.with(this)
@@ -73,9 +121,19 @@ class DetailApp : AppCompatActivity() {
         appName.text = list[0].appName
         devName.text = list[0].devName
         appCategory.text = list[0].appCategory
+
+        if(list[0].appCategory.equals("Game", true)){
+            detail_aboutApp_title.text = "About this Game"
+        }else{
+            detail_aboutApp_title.text = "About this App"
+        }
+
+        appDesc.text = list[0].appDesc
+        appRatingNum.text = list[0].ratting.toString()
+        appRatingBar.rating = list[0].ratting.toFloat()
     }
 
-    private fun showDetailBanner(listData:Array<String>, imgType:String){
+    private fun showDetailBanner(listData: Array<String>, imgType: String){
         viewPager2 = findViewById<View>(R.id.detail_appImgSlider) as ViewPager2
         sliderAdapter = DetailBannerSliderAdapter(listData, imgType)
 
