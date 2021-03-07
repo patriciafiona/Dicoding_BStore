@@ -9,4 +9,7 @@ data class App(
     var appCategory: String = "",
     var detail: String = "",
     var ratting:Double = 0.0, //Max is 5.0
+    var appBgDetail: String = "",
+    var detailBannerType: String = "",
+    var arrayDetailBanner: Array<String> = emptyArray(),
 )

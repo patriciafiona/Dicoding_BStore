@@ -43,15 +43,17 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginBottom="16dp"
+                    app:layout_constraintWidth_percent="0.2"
                     android:src="@color/grey_700"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/homeBannerAppName"
-                    android:layout_width="200dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    app:layout_constraintWidth_percent="0.7"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@string/temp_app_name"
@@ -63,20 +65,25 @@
 
                 <TextView
                     android:id="@+id/homeBannerDevName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    app:layout_constraintWidth_percent="0.25"
                     android:text="@string/temp_dev_name"
                     android:textColor="@color/white"
                     android:textSize="12sp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     app:layout_constraintBottom_toTopOf="@+id/homeBannerAppRating"
                     app:layout_constraintStart_toEndOf="@+id/homeBannerAppImg" />
 
                 <TextView
                     android:id="@+id/homeBannerAppCategory"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginRight="10dp"
+                    app:layout_constraintWidth_percent="0.3"
                     android:drawablePadding="2dp"
                     android:ellipsize="end"
                     android:maxLines="1"

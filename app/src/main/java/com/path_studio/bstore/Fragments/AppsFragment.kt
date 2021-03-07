@@ -46,7 +46,7 @@ class AppsFragment : Fragment() {
 
     private fun showRecyclerList() {
         rvApp.layoutManager = LinearLayoutManager(activity)
-        val listAppAdapter = ListVerticalAppAdapter(list)
+        val listAppAdapter = ListVerticalAppAdapter(list, activity as MainActivity)
         rvApp.adapter = listAppAdapter
     }
 }

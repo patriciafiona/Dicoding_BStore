@@ -41,7 +41,7 @@ class ListHorizontalAppAdapter(val listApp: ArrayList<App>, val activity: MainAc
             //Toast.makeText(holder.itemView.context, "You Choose: " + listApp.get(holder.adapterPosition).appName, Toast.LENGTH_SHORT).show()
             //show detail page
             val i = Intent(activity, DetailApp::class.java)
-            i.putExtra("appData", AppsData.listDataFromID(listApp.get(holder.adapterPosition).appID))
+            i.putExtra("appID", listApp[holder.adapterPosition].appID)
             activity.startActivity(i)
         }
     }
