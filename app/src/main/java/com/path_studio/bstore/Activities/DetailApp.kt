@@ -4,6 +4,7 @@ import android.R.attr
 import android.R.attr.button
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.method.LinkMovementMethod
 import android.transition.Visibility
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -20,6 +21,7 @@ import com.path_studio.bstore.HorizontalMarginItemDecoration
 import com.path_studio.bstore.Model.App
 import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
+import org.w3c.dom.Text
 import java.lang.Math.abs
 import java.util.*
 
@@ -107,6 +109,16 @@ class DetailApp : AppCompatActivity() {
         val appRatingBar: RatingBar = findViewById(R.id.detail_appRating_bar)
         val detail_aboutApp_title: TextView = findViewById(R.id.detail_aboutApp_title)
         appBgImage = findViewById(R.id.detail_backgroundGradient)
+        
+        val appRatingsm: TextView = findViewById(R.id.detail_appRating_sm)
+        val appSizesm: TextView = findViewById(R.id.detail_appSize_sm)
+        val appIconRatedsm: ImageView = findViewById(R.id.detail_icon_ratedApp_sm)
+        val appRatedsm: TextView = findViewById(R.id.detail_appRated_sm)
+
+        val devWeb: TextView = findViewById(R.id.detail_developer_web)
+        val devEmail: TextView = findViewById(R.id.detail_developer_email)
+        val devAddress: TextView = findViewById(R.id.detail_developer_email)
+        val devPhone: TextView = findViewById(R.id.detail_developer_phone)
 
         Glide.with(this)
                 .load(list[0].appLogo)
@@ -131,6 +143,49 @@ class DetailApp : AppCompatActivity() {
         appDesc.text = list[0].appDesc
         appRatingNum.text = list[0].ratting.toString()
         appRatingBar.rating = list[0].ratting.toFloat()
+        
+        appRatingsm.text = list[0].ratting.toString()
+
+        var tempSize: String = ""
+        if(list[0].appSize >= 1000){
+            tempSize = (list[0].appSize / 1000).toString() + "GB"
+        }else{
+            tempSize = list[0].appSize.toString() + "MB"
+        }
+        appSizesm.text = tempSize
+
+
+        var ratedIcon: Int = 0
+        if(list[0].appRate == 3){
+            ratedIcon = R.drawable.rated_3_plus
+        }else if(list[0].appRate == 7){
+            ratedIcon = R.drawable.rated_7_plus
+        }else if(list[0].appRate == 12){
+            ratedIcon = R.drawable.rated_12_plus
+        }else if(list[0].appRate == 16){
+            ratedIcon = R.drawable.rated_16_plus
+        }else{
+            //must be 18+
+            ratedIcon = R.drawable.rated_18_plus
+        }
+        appIconRatedsm.setImageResource(ratedIcon)
+
+        val tempRatedApp: String = "Rated for "+list[0].appRate+"+"
+        appRatedsm.text = tempRatedApp
+
+        devWeb.setMovementMethod(LinkMovementMethod.getInstance());
+        setDevContact(devWeb, list[0].arrayDeveloperContact[0])
+        setDevContact(devEmail, list[0].arrayDeveloperContact[1])
+        setDevContact(devAddress, list[0].arrayDeveloperContact[2])
+        setDevContact(devPhone, list[0].arrayDeveloperContact[3])
+    }
+
+    private fun setDevContact(textView: TextView, data: String){
+        if(data.isEmpty()){
+            textView.text = "-"
+        }else{
+            textView.text = data
+        }
     }
 
     private fun showDetailBanner(listData: Array<String>, imgType: String){

@@ -110,9 +110,89 @@
                 android:paddingVertical="20dp"
                 android:orientation="vertical">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp">
+
+                    <ImageView
+                        android:id="@+id/detail_icon_star"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_stars_24"
+                        app:layout_constraintBottom_toTopOf="@+id/detail_appRating_sm"
+                        app:layout_constraintEnd_toStartOf="@+id/detail_icon_download"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.3" />
+
+                    <TextView
+                        android:id="@+id/detail_appRating_sm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/temp_app_ratting"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/detail_appSize_sm"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/detail_icon_star"
+                        app:layout_constraintWidth_percent="0.3" />
+
+                    <ImageView
+                        android:id="@+id/detail_icon_download"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_download_24"
+                        app:layout_constraintBottom_toTopOf="@+id/detail_appSize_sm"
+                        app:layout_constraintEnd_toStartOf="@+id/detail_icon_ratedApp_sm"
+                        app:layout_constraintStart_toEndOf="@+id/detail_icon_star"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <TextView
+                        android:id="@+id/detail_appSize_sm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/temp_app_size"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/detail_appRated_sm"
+                        app:layout_constraintStart_toEndOf="@+id/detail_appRating_sm"
+                        app:layout_constraintTop_toBottomOf="@+id/detail_icon_download"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                    <ImageView
+                        android:id="@+id/detail_icon_ratedApp_sm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rated_12_plus"
+                        app:layout_constraintBottom_toTopOf="@+id/detail_appRated_sm"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/detail_icon_download"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.3" />
+
+                    <TextView
+                        android:id="@+id/detail_appRated_sm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/temp_rated_app"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/detail_appSize_sm"
+                        app:layout_constraintTop_toBottomOf="@+id/detail_icon_ratedApp_sm"
+                        app:layout_constraintWidth_percent="0.3" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="@string/install"/>
 
@@ -190,11 +270,12 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginHorizontal="20dp"
-                    android:text="@string/ratings_and_reviews"/>
+                    android:text="@string/ratings_and_contact"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
                     android:layout_marginHorizontal="20dp">
 
                     <TextView
@@ -211,6 +292,122 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/detail_appRating_num" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/detail_appRating_num"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.7">
+
+                        <!--Website Part-->
+                        <ImageView
+                            android:id="@+id/dev_detail_icon_01"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_baseline_web_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.1" />
+
+                        <TextView
+                            android:id="@+id/deb_detail_title_01"
+                            style="@style/TextDeveloperContactTitle"
+                            android:text="@string/detail_developer_web"
+                            app:layout_constraintWidth_percent="0.9"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/detail_developer_web"
+                            style="@style/TextDeveloperContactDetail"
+                            android:text="@string/temp_developer_web"
+                            app:layout_constraintWidth_percent="0.9"
+                            android:autoLink="web"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toBottomOf="@+id/deb_detail_title_01" />
+
+                        <!--Email Part-->
+                        <ImageView
+                            android:id="@+id/dev_detail_icon_02"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_baseline_email_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/detail_developer_web"
+                            app:layout_constraintWidth_percent="0.1" />
+
+                        <TextView
+                            android:id="@+id/dev_detail_title_02"
+                            style="@style/TextDeveloperContactTitle"
+                            android:text="@string/detail_developer_email"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toBottomOf="@+id/detail_developer_web"
+                            app:layout_constraintWidth_percent="0.9" />
+
+                        <TextView
+                            android:id="@+id/detail_developer_email"
+                            style="@style/TextDeveloperContactDetail"
+                            android:text="@string/temp_developer_email"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toBottomOf="@+id/dev_detail_title_02"
+                            app:layout_constraintWidth_percent="0.9" />
+
+                        <!--Address Part-->
+                        <ImageView
+                            android:id="@+id/dev_detail_icon_03"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_baseline_location_on_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/detail_developer_email"
+                            app:layout_constraintWidth_percent="0.1" />
+
+                        <TextView
+                            android:id="@+id/dev_detail_title_03"
+                            style="@style/TextDeveloperContactTitle"
+                            android:text="@string/detail_developer_address"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toBottomOf="@+id/detail_developer_email"
+                            app:layout_constraintWidth_percent="0.9" />
+
+                        <TextView
+                            android:id="@+id/detail_developer_address"
+                            style="@style/TextDeveloperContactDetail"
+                            android:text="@string/temp_developer_address"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toBottomOf="@+id/dev_detail_title_03"
+                            app:layout_constraintWidth_percent="0.9" />
+
+                        <!--Phone Part-->
+                        <ImageView
+                            android:id="@+id/dev_detail_icon_04"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_baseline_phone_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/detail_developer_address"
+                            app:layout_constraintWidth_percent="0.1" />
+
+                        <TextView
+                            android:id="@+id/dev_detail_title_04"
+                            style="@style/TextDeveloperContactTitle"
+                            android:text="@string/detail_developer_phone"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toBottomOf="@+id/detail_developer_address"
+                            app:layout_constraintWidth_percent="0.9" />
+
+                        <TextView
+                            android:id="@+id/detail_developer_phone"
+                            style="@style/TextDeveloperContactDetail"
+                            android:text="@string/temp_developer_phone"
+                            app:layout_constraintStart_toEndOf="@+id/dev_detail_icon_01"
+                            app:layout_constraintTop_toBottomOf="@+id/dev_detail_title_04"
+                            app:layout_constraintWidth_percent="0.9" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

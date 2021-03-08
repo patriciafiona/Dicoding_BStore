@@ -11,9 +11,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Handler().postDelayed({
-            // If first time open apps
-
-            //If already open this app before
             val intent = Intent(this@SplashActivity, IntoActivity::class.java)
             startActivity(intent)
             finish()

@@ -91,8 +91,8 @@ class IntoActivity : AppIntro() {
 
         // Change Indicator, DOne Text, Skip, and Next Arrow Color
         setIndicatorColor(R.color.grey_800, R.color.grey_600)
-        setColorDoneText(this.getColor(R.color.grey_800))
-        setColorSkipButton(this.getColor(R.color.grey_800))
+        //setColorDoneText(this.getColor(R.color.grey_800))
+        //setColorSkipButton(this.getColor(R.color.grey_800))
         setNextArrowColor(this.getColor(R.color.grey_800))
     }
 

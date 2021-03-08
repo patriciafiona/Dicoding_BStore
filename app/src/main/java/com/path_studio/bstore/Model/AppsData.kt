@@ -1,5 +1,7 @@
 package com.path_studio.bstore.Model
 
+import android.util.Log
+
 object AppsData {
 
     /*
@@ -90,7 +92,13 @@ object AppsData {
                             "You must be 13 or older and agree to Adobe’s terms and privacy policy:\n" +
                             "http://www.adobe.com/go/terms_linkfree\n" +
                             "http://www.adobe.com/go/privacy_policy_linkfree\n" +
-                            "Do Not Sell My Personal Information: https://www.adobe.com/privacy/ca-rights.html" //App Description
+                            "Do Not Sell My Personal Information: https://www.adobe.com/privacy/ca-rights.html", //App Description
+                        arrayOf( //Developer Contact
+                                "https://www.adobe.com/products/photoshop-lightroom.html", //website
+                                "LrAndroid-Feedback@adobe.com", // Email
+                                "Adobe Inc. 345 Park Avenue San Jose, CA", // Address
+                                "95110-2704", //Phone Number
+                        )
             ),
             arrayOf(
                     10001,
@@ -168,7 +176,13 @@ object AppsData {
                             "\n" +
                             "Permissions:\n" +
                             "READ_EXTERNAL_STORAGE: Add images from your photo gallery.\n" +
-                            "CAMERA/WRITE_EXTERNAL_STORAGE: Take a photo in the app & store designs in your gallery."
+                            "CAMERA/WRITE_EXTERNAL_STORAGE: Take a photo in the app & store designs in your gallery.",
+                    arrayOf( //Developer Contact
+                            "https://www.canva.com/",
+                            "android-app@canva.com",
+                            "110 Kippax Street, Surry Hills, Sydney, NSW 2010, Australia",
+                            ""
+                    )
             ),
             arrayOf(
                     80001,
@@ -209,7 +223,13 @@ object AppsData {
                             "「Effect」\n" +
                             "Get creative with a range of magical effects\n" +
                             "\n" +
-                            "Contact：capcut.support@bytedance.com\n"
+                            "Contact：capcut.support@bytedance.com\n",
+                    arrayOf( //Developer Contact
+                            "https://lv.faceueditor.com/en",
+                            "capcut.support@bytedance.com",
+                            "",
+                            ""
+                    )
             ),
             arrayOf(
                     30001,
@@ -254,7 +274,13 @@ object AppsData {
                             "Images shown are indicative of the content available, will vary by country, and are subject to change.\n" +
                             "\n" +
                             "Terms of Use: hotstar.com/id/terms-of-use\n" +
-                            "Privacy Policy: hotstar.com/id/privacy-policy"
+                            "Privacy Policy: hotstar.com/id/privacy-policy",
+                    arrayOf( //Developer Contact
+                            "https://www.hotstar.com/id",
+                            "disneyplus.id@hotstar.com",
+                            "Star House, Urmi Estate, 95 Ganpatrao Kadam Marg, Lower Parel, Mumbai - 400013",
+                            ""
+                    )
             ),
             arrayOf(
                     40003,
@@ -314,7 +340,13 @@ object AppsData {
                             "READ_EXTERNAL_STORAGE & WRITE_EXTERNAL_STORAGE permissions are being used to download, store and access game data.\n" +
                             "\n" +
                             "HOW TO PLAY? DECISION GAMES, TEXT ADVENTURES, CYOA?\n" +
-                            "You are connected to your friends in Duskwood via chat messenger. Your answers, choices and decisions influence what others reveal of themselves, whether they like you, and even change the course of the story. This type of role play game (rpg) is also called text adventure, cyoa, decision- or choice games. It belongs to the genre of interactive crime fiction."
+                            "You are connected to your friends in Duskwood via chat messenger. Your answers, choices and decisions influence what others reveal of themselves, whether they like you, and even change the course of the story. This type of role play game (rpg) is also called text adventure, cyoa, decision- or choice games. It belongs to the genre of interactive crime fiction.",
+                    arrayOf( //Developer Contact
+                            "http://everbytestudio.com/",
+                            "support@everbytestudio.com",
+                            "Laulestraße 31 78120, Furtwangen",
+                            ""
+                    )
             ),
             arrayOf(
                     40001,
@@ -354,7 +386,13 @@ object AppsData {
                             "Easy to use controls and smooth graphics promises the best survival experience you will find on mobile to help you immortalize your name among the legends.\n" +
                             "\n" +
                             "[Contact us]\n" +
-                            "Customer Service: https://goo.gl/8f5918"
+                            "Customer Service: https://goo.gl/8f5918",
+                    arrayOf( //Developer Contact
+                            "https://ff.garena.com/",
+                            "freefire@garena.com",
+                            "1 FUSIONOPOLIS PLACE, 17-10, GALAXIS, Singapore",
+                            ""
+                    )
             ),
             arrayOf(
                     60001,
@@ -416,7 +454,13 @@ object AppsData {
                             "\n" +
                             "For any questions, please feel free to contact us at\n" +
                             "Official Website: www.JOOX.com\n" +
-                            "Email: feedback@JOOX.com\n"
+                            "Email: feedback@JOOX.com\n",
+                    arrayOf( //Developer Contact
+                            "https://www.joox.com/id",
+                            "support@joox.com",
+                            "4/F,Nanxinnanyi Road,Feiyada Building,Nanshan District",
+                            ""
+                    )
             ),
             arrayOf(
                     20001,
@@ -487,7 +531,13 @@ object AppsData {
                             "If your network speed is too slow or you don't have enough device storage, LINE may not install properly.\n" +
                             "\n" +
                             "If this happens, please check your connection and try again.\n" +
-                            "**********"
+                            "**********",
+                    arrayOf( //Developer Contact
+                            "http://line.me/",
+                            "line-support@line.me",
+                            "東京都新宿区新宿四丁目1番6号",
+                            ""
+                    )
             ),
             arrayOf(
                     40002,
@@ -548,7 +598,13 @@ object AppsData {
                             "EEA privacy policy: https://outfit7.com/privacy/eea/\n" +
                             "US privacy policy: https://outfit7.com/privacy/\n" +
                             "Rest of the world privacy policy: https://outfit7.com/privacy/\n" +
-                            "Customer support: support@outfit7.com"
+                            "Customer support: support@outfit7.com",
+                    arrayOf( //Developer Contact
+                            "https://outfit7.com/game-support/",
+                            "support@outfit7.com",
+                            "Outfit7 Limited Agiou Georgiou 4607 Pissouri, Cyprus",
+                            ""
+                    )
             ),
             arrayOf(
                     30002,
@@ -582,7 +638,13 @@ object AppsData {
                             "• Save your data. Download titles to your mobile device and watch offline, wherever you are.\n" +
                             "\n" +
                             "For complete terms and conditions, please visit http://www.netflix.com/termsofuse\n" +
-                            "For privacy statement, please visit http://www.netflix.com/privacy\n"
+                            "For privacy statement, please visit http://www.netflix.com/privacy\n",
+                    arrayOf( //Developer Contact
+                            "http://www.netflix.com/",
+                            "playstore@netflix.com",
+                            "100 Winchester Circle Los Gatos, CA 95032-1815, USA",
+                            ""
+                    )
             ),
             arrayOf(
                     70002,
@@ -667,7 +729,13 @@ object AppsData {
                             "Start your PicsArt Gold membership with a free trial - limited to one per Google Play account. Once the trial is over, you’ll be charged a nominal subscription fee. Your Gold subscription will automatically renew unless auto-renew is turned off at least 24 hours before the end of the current period. If your subscription is subject to any promotional discount, the discount will expire upon the end of the current period & you’ll be charged the standard rate upon renewal. Go to your Google Play account to manage your membership & to turn auto-renew off. Your Google Play account will be charged when the purchase is confirmed.\n" +
                             "\n" +
                             "Terms and conditions: https://picsart.com/terms-and-conditions\n" +
-                            "About Ads: https://picsart.com/privacy-policy#interest-base"
+                            "About Ads: https://picsart.com/privacy-policy#interest-base",
+                    arrayOf( //Developer Contact
+                            "https://picsart.com/",
+                            "support@picsart.com",
+                            "PicsArt Inc. One Market Street, Spear Tower, Floor 32 San Francisco, 94105, CA",
+                            ""
+                    )
             ),
             arrayOf(
                     50001,
@@ -711,7 +779,13 @@ object AppsData {
                             "- Fashion and style inspiration\n" +
                             "- Food, new recipes & cooking\n" +
                             "\n" +
-                            "To start saving and sharing Pins, download now.\n"
+                            "To start saving and sharing Pins, download now.\n",
+                    arrayOf( //Developer Contact
+                            "https://help.pinterest.com/en",
+                            "help@pinterest.com",
+                            "",
+                            ""
+                    )
             ),
             arrayOf(
                     40005,
@@ -753,7 +827,13 @@ object AppsData {
                             "Reddit: https://www.reddit.com/r/PUBGMobile/\n" +
                             "Discord：https://discord.gg/pubgm\n" +
                             "\n" +
-                            "Contact our customer service at PUBGMOBILE_CS@tencentgames.com if you have any questions."
+                            "Contact our customer service at PUBGMOBILE_CS@tencentgames.com if you have any questions.",
+                    arrayOf( //Developer Contact
+                            "https://www.pubgmobile.com/en-US/",
+                            "PUBGMOBILE_CS@tencentgames.com",
+                            "10 ANSON ROAD #21-07 INTERNATIONAL PLAZA SINGAPORE (079903)",
+                            ""
+                    )
             ),
             arrayOf(
                     60002,
@@ -775,7 +855,7 @@ object AppsData {
                         "https://play-lh.googleusercontent.com/NDt45xuHvBb6wRA4bDvGFghPx-CuJ4T_rdjXz-RFfv-cN6OTHYbxZn7gEhcYuBJQ5PQ=w720-h310-rw",
                         "https://play-lh.googleusercontent.com/TzU0OALClf7QmVTGYAYUQyk-o_yMxAE4GOVp-5DDrKmo6FUE-1V-SDXDbQUXlBk5CA=w720-h310-rw",
                         "https://play-lh.googleusercontent.com/34bM--9HYK6sJkaG5a7tu2zEAg4hUy6JC7gMRvBqyQBl6A5ZoBVBNI3w7f3jKO_8vQ=w720-h310-rw",
-                        "https://play-lh.googleusercontent.com/dZC2vJgTOyTV6iK6U_MxrrvGynvXEDeo4mpZGzuoUGlMue2QhB3vtKDbFfILa7KYCw=w720-h310-rw"
+                        "https://play-lh.googleusercontent.com/dZC2vJgTOyTV6iK6U_MxrrvGynvXEDeo4mpZGzuoUGlMue2QhB3vtKDbFfILa7KYCw=w720-h310-rw",
                     ),
                     "P",
                     "With Spotify, you can listen to music and play millions of songs and podcasts for free. Stream music and podcasts you love and find music - or your next favorite song - from all over the world.\n" +
@@ -814,7 +894,13 @@ object AppsData {
                             "Like us on Facebook: http://www.facebook.com/spotify\n" +
                             "Follow us on Twitter: http://twitter.com/spotify\n" +
                             "\n" +
-                            "Please note: This app features Nielsen’s audience measurement software which will allow you to contribute to market research, such as Nielsen’s Audio Measurement. If you don't want to participate, you can opt-out within the app settings. To learn more about our digital audience measurement products and your choices in regard to them, please visit http://www.nielsen.com/digitalprivacy for more information."
+                            "Please note: This app features Nielsen’s audience measurement software which will allow you to contribute to market research, such as Nielsen’s Audio Measurement. If you don't want to participate, you can opt-out within the app settings. To learn more about our digital audience measurement products and your choices in regard to them, please visit http://www.nielsen.com/digitalprivacy for more information.",
+                    arrayOf( //Developer Contact
+                            "https://www.spotify.com/id/",
+                            "android-support@spotify.com",
+                            "Spotify Ltd c/o Goodwille Ltd St James House 13 Kensington Square London W8 5HD Great Britain",
+                            ""
+                    )
             ),
             arrayOf(
                     40004,
@@ -855,7 +941,13 @@ object AppsData {
                             "Best Mobile Game - GTP Indie Cup W'19\n" +
                             "TOP 20 - Indie Games Showcase from Google Play\n" +
                             "Best Indie Game (Nominee) - DevGAMM’2019\n" +
-                            "Excellence in Game Design (Nominee) - DevGAMM’2019"
+                            "Excellence in Game Design (Nominee) - DevGAMM’2019",
+                    arrayOf( //Developer Contact
+                            "https://kiarygames.com/",
+                            "feedback@kiarygames.com",
+                            "Russian Federation, 660098 Krasnoyarski krai, Krasnoyarsk, Alekseeva 22-490",
+                            ""
+                    )
             ),
             arrayOf(
                     80002,
@@ -903,7 +995,13 @@ object AppsData {
                             "■ Edit your own videos\n" +
                             "Our integrated editing tools allow you to easily trim, cut, merge and duplicate video clips without leaving the app.\n" +
                             "\n" +
-                            "* Any feedback? Contact us at https://www.tiktok.com/legal/report/feedback or tweet us @tiktok_us\n"
+                            "* Any feedback? Contact us at https://www.tiktok.com/legal/report/feedback or tweet us @tiktok_us\n",
+                    arrayOf( //Developer Contact
+                            "https://www.tiktok.com/",
+                            "feedback@tiktok.com",
+                            "201 Henderson Road, #06-22 Apex@Henderson, Singapore 159545",
+                            ""
+                    )
             ),
             arrayOf(
                     50002,
@@ -954,7 +1052,13 @@ object AppsData {
                             "All photos are of models and used for illustrative purposes only.\n" +
                             "\n" +
                             "Privacy: https://www.gotinder.com/privacy\n" +
-                            "Terms: https://www.gotinder.com/terms\n"
+                            "Terms: https://www.gotinder.com/terms\n",
+                    arrayOf( //Developer Contact
+                            "https://tinder.com/",
+                            "help@gotinder.com",
+                            "Tinder 8833 W. Sunset Blvd. West Hollywood, CA 90069",
+                            ""
+                    )
             ),
             arrayOf(
                     30003,
@@ -995,7 +1099,13 @@ object AppsData {
                             "\n" +
                             "For feedback and assistance, please visit our Support Center: https://help.twitch.tv\n" +
                             "\n" +
-                            "Please note: This app features Nielsen’s proprietary measurement software which contributes to market research, like Nielsen’s TV Ratings. Please see http://priv-policy.imrworldwide.com/priv/mobile/us/en/optout.html for more information\n"
+                            "Please note: This app features Nielsen’s proprietary measurement software which contributes to market research, like Nielsen’s TV Ratings. Please see http://priv-policy.imrworldwide.com/priv/mobile/us/en/optout.html for more information\n",
+                    arrayOf( //Developer Contact
+                            "https://www.twitch.tv/",
+                            "android@twitch.tv",
+                            "350 Bush St Suite 200 San Francisco, CA 94104",
+                            ""
+                    )
             ),
             arrayOf(
                     30004,
@@ -1091,7 +1201,15 @@ object AppsData {
                             "\n" +
                             "Go ahead and visit us on www.viu.com\n" +
                             "\n" +
-                            "NOTE: Data charges are applicable as per your internet/mobile operator when you stream videos on the app. If you are viewing downloaded content, no data charges apply."
+                            "NOTE: Data charges are applicable as per your internet/mobile operator when you stream videos on the app. If you are viewing downloaded content, no data charges apply.",
+                    arrayOf( //Developer Contact
+                            "https://www.vuclip.com/",
+                            "help.viu@vuclip.com",
+                            "Vuclip 1551 McCarthy Boulevard, Suite 213 Milpitas,CA 95035",
+                            "Phone: +1.408.649.2240 " +
+                                    "\n"+
+                                    "Fax: +1.408.649.2245"
+                    )
             ),
             arrayOf(
                     20002,
@@ -1140,7 +1258,13 @@ object AppsData {
                             "\n" +
                             "• AND MUCH MORE: Share your location, exchange contacts, set custom wallpapers and notification sounds, broadcast messages to multiple contacts at once, and more!\n" +
                             "\n" +
-                            "*Data charges may apply. Contact your provider for details."
+                            "*Data charges may apply. Contact your provider for details.",
+                    arrayOf( //Developer Contact
+                            "https://www.whatsapp.com/",
+                            "android@support.whatsapp.com",
+                            "1601 Willow Road Menlo Park, CA 94025",
+                            "",
+                    )
             )
     )
 
@@ -1181,6 +1305,7 @@ object AppsData {
                 app.arrayDetailBanner = data[9] as Array<String>
                 app.detailBannerType = data[10].toString()
                 app.appDesc = data[11].toString()
+                app.arrayDeveloperContact = data[12] as Array<String>
                 list.add(app)
             }
         }
@@ -1193,7 +1318,7 @@ object AppsData {
             val list = arrayListOf<App>()
             //save data location index with ratting information
             val sortedAppRating = hashMapOf<Int, Double>()
-            array_of_apps.forEachIndexed{ index, data -> sortedAppRating.put(index, data[4].toString().toDouble()) }
+            array_of_apps.forEachIndexed{ index, data -> sortedAppRating.put(index, data[5].toString().toDouble()) }
 
             //sorted data ratting (Best Ratting -> Worse Ratting)
             val temp = sortedAppRating.toList().sortedByDescending { (_, value) -> value}.toMap()

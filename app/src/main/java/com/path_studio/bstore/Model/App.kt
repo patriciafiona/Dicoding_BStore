@@ -14,4 +14,5 @@ data class App(
     var appBgDetail: String = "",
     var detailBannerType: String = "",
     var arrayDetailBanner: Array<String> = emptyArray(),
+    var arrayDeveloperContact: Array<String> = emptyArray()
 )
