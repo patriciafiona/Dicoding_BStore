@@ -470,7 +470,6 @@ object AppsData {
                     3,
                     4.1,
                     83.0,
-                    3,
                     "https://play-lh.googleusercontent.com/74iMObG1vsR3Kfm82RjERFhf99QFMNIY211oMvN636_gULghbRBMjpVFTjOK36oxCbs=s180-rw",
                     "http://static.rappler.com/images/Line-BannerImage-02142013.jpg",
                     arrayOf(
@@ -1311,6 +1310,21 @@ object AppsData {
         }
         return list
     }
+
+        //get data that contain parameter
+        fun listDataFromName(appName: String): ArrayList<App>{
+                val list = arrayListOf<App>()
+                for (data in array_of_apps) {
+                        if(data[1].toString().contains(appName, true)){
+                                val app = App()
+                                app.appID = data[0] as Int
+                                app.appName = data[1].toString()
+                                app.appLogo = data[7].toString()
+                                list.add(app)
+                        }
+                }
+                return list
+        }
 
     //get 10 best app - based on ratting
     val listDataTenBestApp: ArrayList<App>

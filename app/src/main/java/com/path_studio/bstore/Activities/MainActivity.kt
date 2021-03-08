@@ -1,9 +1,12 @@
 package com.path_studio.bstore.Activities
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
@@ -12,12 +15,18 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mancj.materialsearchbar.MaterialSearchBar
 import com.mancj.materialsearchbar.adapter.SuggestionsAdapter
+import com.path_studio.bstore.Adapters.CustomSuggestionsAdapter
+import com.path_studio.bstore.Model.App
+import com.path_studio.bstore.Model.AppsData
 import com.path_studio.bstore.R
+import kotlin.system.exitProcess
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListener {
 
     private var lastSearches: List<String>? = null
-    private val searchBar: MaterialSearchBar? = null
+    private lateinit var searchBar: MaterialSearchBar
+    private var list: ArrayList<App>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,16 +41,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setBottomNav(){
         val navView = findViewById<BottomNavigationView>(R.id.nav_view)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home,
-            R.id.navigation_rankings,
-            R.id.navigation_apps,
-            R.id.navigation_about,
-            R.id.navigation_settings
+                R.id.navigation_home,
+                R.id.navigation_apps,
+                R.id.navigation_about,
         )
             .build()
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -50,7 +53,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun settingSearch() {
-        searchBar?.setOnSearchActionListener(object : MaterialSearchBar.OnSearchActionListener {
+        searchBar = findViewById(R.id.searchBar)
+        searchBar.setCardViewElevation(10)
+
+        //enable searchbar callbacks
+        searchBar.setOnSearchActionListener(this)
+
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val customSuggestionsAdapter = CustomSuggestionsAdapter(inflater, this@MainActivity)
+
+        searchBar.setOnSearchActionListener(object : MaterialSearchBar.OnSearchActionListener {
             override fun onSearchStateChanged(enabled: Boolean) {}
 
             override fun onSearchConfirmed(text: CharSequence) {
@@ -61,37 +73,28 @@ class MainActivity : AppCompatActivity() {
                 if (buttonCode == MaterialSearchBar.BUTTON_NAVIGATION) {
                     //opening or closing a navigation drawer
                 } else if (buttonCode == MaterialSearchBar.BUTTON_BACK) {
-                    searchBar?.closeSearch()
+                    searchBar.closeSearch()
                 }
             }
         })
-        searchBar?.addTextChangeListener(object : TextWatcher {
+        searchBar.addTextChangeListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                //Check data in list
-                val search: String = searchBar?.getText()
-                if (TextUtils.isEmpty(search)) {
-                    /*//Clear current list
-                    list.clear()
+                searchBar.setCustomSuggestionAdapter(customSuggestionsAdapter)
 
-                    //Show all data in list
-                    list.addAll(MobilData.getListData())
-                    showRecyclerList()*/
-                } else {
-                    /*//Clear current list
-                    list.clear()
-
-                    //Show all data in list
-                    list.addAll(MobilData.getFilterText(search))
-                    showRecyclerList()*/
+                if (searchBar.text.isNotEmpty()) {
+                    //get data that contain searchBar.text
+                    list = AppsData.listDataFromName(searchBar.text)
+                    customSuggestionsAdapter.suggestions = list
+                    searchBar.showSuggestionsList()
+                }else{
+                    searchBar.hideSuggestionsList()
                 }
             }
 
-            override fun afterTextChanged(s: Editable) {
-                //
-            }
+            override fun afterTextChanged(s: Editable) {}
         })
-        searchBar?.setSuggestionsClickListener(object :
+        searchBar.setSuggestionsClickListener(object :
                 SuggestionsAdapter.OnItemViewClickListener {
             override fun OnItemClickListener(position: Int, v: View) {}
             override fun OnItemDeleteListener(position: Int, v: View) {}
@@ -108,5 +111,29 @@ class MainActivity : AppCompatActivity() {
                 searchBar.visibility = View.VISIBLE
             }
         }
+    }
+
+    override fun onBackPressed() {
+        val alert = AlertDialog.Builder(this)
+        alert.setMessage(R.string.exit_app)
+        alert.setCancelable(false)
+        alert.setPositiveButton(android.R.string.yes) { dialogInterface, i -> //exit app
+            finishAndRemoveTask()
+            exitProcess(0)
+        }
+        alert.setNegativeButton(android.R.string.no) { dialogInterface, i -> dialogInterface.dismiss() }
+        alert.show()
+    }
+
+    override fun onSearchStateChanged(enabled: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSearchConfirmed(text: CharSequence?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onButtonClicked(buttonCode: Int) {
+        TODO("Not yet implemented")
     }
 }

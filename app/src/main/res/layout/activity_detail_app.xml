@@ -282,7 +282,7 @@
                         android:id="@+id/detail_appRating_num"
                         style="@style/TextRating"
                         android:text="@string/temp_app_ratting"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/detail_appRating_bar"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
