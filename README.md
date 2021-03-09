@@ -1,4 +1,7 @@
 # Dicoding_BStore
+
+Uploading Rec 2021-03-09 14;03;14.mp4…
+
 Result of Renew my Dicoding: " Belajar Membuat Aplikasi Android untuk Pemula" Certificate (Submission Result)
 
 ## Information
