@@ -190,7 +190,7 @@ class DetailApp : AppCompatActivity() {
 
     private fun showDetailBanner(listData: Array<String>, imgType: String){
         viewPager2 = findViewById<View>(R.id.detail_appImgSlider) as ViewPager2
-        sliderAdapter = DetailBannerSliderAdapter(listData, imgType)
+        sliderAdapter = DetailBannerSliderAdapter(listData, this)
 
         viewPager2.adapter = sliderAdapter
 

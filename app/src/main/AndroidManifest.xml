@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BStore">
-        <activity android:name=".Activities.DetailApp"></activity>
+        <activity android:name=".Activities.ImageViewDetailActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity android:name=".Activities.DetailApp" />
         <activity android:name=".Activities.IntoActivity" />
         <activity android:name=".Activities.MainActivity" />
         <activity

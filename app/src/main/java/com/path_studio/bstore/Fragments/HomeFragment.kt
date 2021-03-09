@@ -75,6 +75,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //Show Search Bar
         (activity as MainActivity).setSearchBarVisibility(1)
+        (activity as MainActivity).clearSearchBar()
 
         //Setting Home Banner Slide Show
         showHomeBanner(view)
@@ -127,7 +128,7 @@ class HomeFragment : Fragment() {
         mSlideViewPager = view.findViewById<View>(R.id.homeBannerContainer) as ViewPager
         mDotLayout = view.findViewById<View>(R.id.dotsLayoutHomeBanner) as LinearLayout
 
-        sliderAdapter = HomeBannerSlideAdapter(view.context)
+        sliderAdapter = HomeBannerSlideAdapter(view.context, activity as MainActivity)
         mSlideViewPager!!.setAdapter(sliderAdapter)
 
         addDotsIndicator(0)

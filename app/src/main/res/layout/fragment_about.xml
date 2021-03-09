@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/FragmentLayout"
+    style="@style/FragmentLayout_About"
     tools:context=".Fragments.AboutFragment">
 
     <LinearLayout

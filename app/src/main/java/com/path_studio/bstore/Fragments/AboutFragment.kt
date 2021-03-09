@@ -21,6 +21,7 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //Hide Search Bar
         (activity as MainActivity).setSearchBarVisibility(0)
+        (activity as MainActivity).clearSearchBar()
     }
 
     override fun onCreateView(

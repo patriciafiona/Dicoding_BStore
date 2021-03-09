@@ -25,6 +25,7 @@ class AppsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //Show Search Bar
         (activity as MainActivity).setSearchBarVisibility(1)
+        (activity as MainActivity).clearSearchBar()
     }
 
     override fun onCreateView(

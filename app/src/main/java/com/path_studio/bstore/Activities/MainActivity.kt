@@ -1,11 +1,9 @@
 package com.path_studio.bstore.Activities
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -54,11 +52,9 @@ class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListen
 
     private fun settingSearch() {
         searchBar = findViewById(R.id.searchBar)
-        searchBar.setCardViewElevation(10)
+        searchBar.setMaxSuggestionCount(5)
 
-        //enable searchbar callbacks
-        searchBar.setOnSearchActionListener(this)
-
+        //enable search bar callbacks
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val customSuggestionsAdapter = CustomSuggestionsAdapter(inflater, this@MainActivity)
 
@@ -73,6 +69,7 @@ class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListen
                 if (buttonCode == MaterialSearchBar.BUTTON_NAVIGATION) {
                     //opening or closing a navigation drawer
                 } else if (buttonCode == MaterialSearchBar.BUTTON_BACK) {
+                    searchBar.clearSuggestions()
                     searchBar.closeSearch()
                 }
             }
@@ -83,11 +80,14 @@ class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListen
                 searchBar.setCustomSuggestionAdapter(customSuggestionsAdapter)
 
                 if (searchBar.text.isNotEmpty()) {
-                    //get data that contain searchBar.text
-                    list = AppsData.listDataFromName(searchBar.text)
-                    customSuggestionsAdapter.suggestions = list
-                    searchBar.showSuggestionsList()
-                }else{
+                    if (searchBar.text.length > 1) {
+                        //get data that contain searchBar.text
+                        list = AppsData.listDataFromName(searchBar.text)
+                        customSuggestionsAdapter.suggestions = list
+                        searchBar.showSuggestionsList()
+                    }
+                } else {
+                    searchBar.clearSuggestions()
                     searchBar.hideSuggestionsList()
                 }
             }
@@ -99,6 +99,21 @@ class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListen
             override fun OnItemClickListener(position: Int, v: View) {}
             override fun OnItemDeleteListener(position: Int, v: View) {}
         })
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        clearSearchBar()
+    }
+
+    fun clearSearchBar(){
+        searchBar = findViewById(R.id.searchBar)
+        if(searchBar.isSearchOpened){
+            searchBar.clearSuggestions()
+            searchBar.closeSearch()
+        }
+
     }
 
     fun setSearchBarVisibility(status: Int){
