@@ -1,6 +1,6 @@
 # Dicoding_BStore
 
-https://user-images.githubusercontent.com/32255348/110432399-a4741500-80e1-11eb-91c2-22756406a3d0.mp4
+![Uploading Result_GIF.gif…]()
 
 Result of Renew my Dicoding: " Belajar Membuat Aplikasi Android untuk Pemula" Certificate (Submission Result)
 
